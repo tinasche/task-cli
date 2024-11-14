@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    runtimeOnly("com.h2database:h2")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
