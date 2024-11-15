@@ -16,18 +16,19 @@ public class Main {
     public static void main(String[] args) {
 
 //        new Main().initialiseList();
+        TaskDbService taskDbService = new TaskDbService();
 
-        intro();
+//        intro();
         switch (args[0]) {
             case "list":
                 if (args.length > 1) {
-                    listItems(args[1]);
+                    taskDbService.getTask(args[1]);
                 } else {
-                    listItems();
+                    taskDbService.getTasks();
                 }
                 break;
             case "add":
-                addItem(args[1]);
+                taskDbService.addTask(args[1]);
                 break;
             case "update":
                 updateItem(args[1], args[2]);
@@ -58,11 +59,10 @@ public class Main {
     public static void intro() {
         String docs = """
                 Available options are:
-                list [options]: returns list of all tasks
-                    options:
-                        done: returns all 'done' tasks
-                        not-done: returns all 'not-done' tasks
-                        in-progress: returns all 'in-progress' tasks
+                list: returns list of all tasks
+                list done: returns all 'done' tasks
+                list not-done: returns all 'not-done' tasks
+                list in-progress: returns all 'in-progress' tasks
                 add <title>: create a new task with title
                 mark-in-progress <TaskId>: set task with TaskId as 'In Progress'
                 mark-done <TaskId>: set task with TaskId as 'Done'
